@@ -17,18 +17,6 @@ export default class News extends Component {
             <NewsItem title={"mytitle"} description={"this is a description"} />
           </div>
         </div>
-
-        <div className="row">
-          <div className="col-md-4">
-            <NewsItem title={"mytitle"} description={"this is a description"} />
-          </div><div className="col-md-4">
-            <NewsItem title={"mytitle"} description={"this is a description"} />
-          </div><div className="col-md-4">
-            <NewsItem title={"mytitle"} description={"this is a description"} />
-          </div>
-        </div>
-
-        This is news component
       </div>
     )
   }
