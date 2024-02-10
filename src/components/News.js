@@ -188,19 +188,7 @@ export class News extends Component {
         "publishedAt": "2024-02-07T00:34:43Z",
         "content": "NASA's Juno spacecraft snapped detailed images of the most volcanically active world in our solar system on Saturday. During this close fly-by, the spacecraft spotted plumes of volcanic activity erup… [+2255 chars]"
       },
-      {
-        "source": {
-          "id": "reuters",
-          "name": "Reuters"
-        },
-        "author": "Reuters Canada",
-        "title": "Chile's former president Sebastian Pinera dies in helicopter crash - Reuters Canada",
-        "description": null,
-        "url": "https://www.reuters.com/world/americas/chile-ex-president-sebastianpinera-dies-helicopter-crash-local-media-says-2024-02-06/",
-        "urlToImage": null,
-        "publishedAt": "2024-02-07T00:16:00Z",
-        "content": null
-      },
+      
       {
         "source": {
           "id": "cnn",
@@ -226,19 +214,6 @@ export class News extends Component {
         "urlToImage": "https://s.yimg.com/ny/api/res/1.2/Q_nrEPtDSMcOjRzLDH0NPg--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD04MjM-/https://media.zenfs.com/en/bloomberg_technology_68/1edf3876d79ccffeac382694ab1706e0",
         "publishedAt": "2024-02-07T00:03:00Z",
         "content": "(Bloomberg) -- Snap Inc. plunged more than 30% in late trading after posting disappointing revenue in the holiday quarter, a sign the owner of the Snapchat app is still reeling from a slump in its di… [+4219 chars]"
-      },
-      {
-        "source": {
-          "id": "axios",
-          "name": "Axios"
-        },
-        "author": "Axios",
-        "title": "Sports betting and Swifties converge on the Super Bowl - Axios",
-        "description": null,
-        "url": "https://www.axios.com/2024/02/06/taylor-swift-super-bowl-sports-betting",
-        "urlToImage": null,
-        "publishedAt": "2024-02-06T23:21:12Z",
-        "content": null
       },
       {
         "source": {
@@ -283,8 +258,10 @@ export class News extends Component {
         {/* {console.log(this.state.articles.articles[0].author)} */}
         <div className="row container">
           {this.state.articles.map((element) => {
-            return <div className="col-md-4 my-2">
-              <NewsItem title={element.title} description={element.description} url={element.urlToImage} newsurl="TODO" />
+            // console.log(element.url)
+
+            return <div className="col-md-4 my-2"key={element.url}>
+              <NewsItem  title={element.title.slice(0, 45) + "..."} description={element.description.slice(0, 88)+"..."} url={element.urlToImage} newsurl={element.url} />
             </div>
 
           })}
