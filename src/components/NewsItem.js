@@ -5,7 +5,7 @@ export  class NewsItem extends Component {
 
 
     render() {
-        let {title, description, url, newsurl} = this.props;
+        let {title, description, url} = this.props;
         return (
             <div>
                 <div className="card" style={{width:'18rem'}}>
