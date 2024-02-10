@@ -280,7 +280,6 @@ export class News extends Component {
     return (
       <div className='container my-3'>
         <h2>NewsMonkey-Top headline</h2>
-
         {/* {console.log(this.state.articles.articles[0].author)} */}
         <div className="row container">
           {this.state.articles.map((element) => {
