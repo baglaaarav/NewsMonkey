@@ -27,7 +27,6 @@ export class News extends Component {
     let pa = await data.json();
     // console.log(pa);
     this.setState({ 
-      todo : false,
       page:this.state.page-1,
       articles: pa.articles
      })
@@ -47,19 +46,17 @@ export class News extends Component {
         articles: pa.articles
       })
     }
-    else{
-      this.setState({
-        todo:true
-      })
-    }
+    
   }
 
 
   render() {
     return (
+
+
       <div className='container my-3'>
-        <h2>NewsMonkey-Top headline</h2>
-        {/* {console.log(this.state.articles.articles[0].author)} */}
+        <h1 className="text-center">NewsMonkey-Top headline</h1>
+        
         <div className="row container">
           {this.state.articles.map((element) => {
             return <div className="col-md-4 my-2" key={element.url}>
@@ -68,8 +65,8 @@ export class News extends Component {
           })}
 
           <div className="container d-flex justify-content-between">
-            <button type="button" disabled={this.state.page<=1} className="btn btn-dark mx-4 " onClick={this.handlePrev} >Previous</button>
-            <button type="button" disabled={this.state.todo} className="btn btn-dark mx-4 " onClick={this.handleNext} >Next</button>
+            <button type="button" disabled={this.state.page<=1} className="btn btn-dark mx-4 " onClick={this.handlePrev} >&#8592; Previous</button>
+            <button type="button" disabled={Math.ceil(this.state.totalResults/20) < this.state.page+1} className="btn btn-dark mx-4 " onClick={this.handleNext} >Next	&rarr; </button>
           </div>
 
 
