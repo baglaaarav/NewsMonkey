@@ -20,13 +20,14 @@ export class News extends Component {
   }
 
   handlePrev = async ()=>{
-    console.log("prev");
-    console.log("next");
+    // console.log("prev");
+    // console.log("next");
     let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=3d733507306c4df1a4345ed4f3656249&page=${this.state.page-1}&pageSize=20`
     let data = await fetch(url);
     let pa = await data.json();
-    console.log(pa);
+    // console.log(pa);
     this.setState({ 
+      todo : false,
       page:this.state.page-1,
       articles: pa.articles
      })
@@ -37,13 +38,18 @@ export class News extends Component {
   handleNext = async () =>{
     
     if(Math.ceil(this.state.totalResults/20) >= this.state.page+1){
-      console.log("next");
+      // console.log("next");
       let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=3d733507306c4df1a4345ed4f3656249&page=${this.state.page+1}&pageSize=20`
       let data = await fetch(url);
       let pa = await data.json();
       this.setState({ 
         page:this.state.page+1,
         articles: pa.articles
+      })
+    }
+    else{
+      this.setState({
+        todo:true
       })
     }
   }
@@ -63,7 +69,7 @@ export class News extends Component {
 
           <div className="container d-flex justify-content-between">
             <button type="button" disabled={this.state.page<=1} className="btn btn-dark mx-4 " onClick={this.handlePrev} >Previous</button>
-            <button type="button" className="btn btn-dark mx-4 " onClick={this.handleNext} >Next</button>
+            <button type="button" disabled={this.state.todo} className="btn btn-dark mx-4 " onClick={this.handleNext} >Next</button>
           </div>
 
 
