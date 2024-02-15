@@ -14,7 +14,7 @@ export class News extends Component {
     }
   }
   async componentDidMount() {
-    let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=3d733507306c4df1a4345ed4f3656249&page=1&pageSize=${this.props.pageSize}`
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${this.props.API}&page=1&pageSize=${this.props.pageSize}`
     this.setState({ loading: true })
     let data = await fetch(url);
     let pa = await data.json();
@@ -24,7 +24,7 @@ export class News extends Component {
   handlePrev = async () => {
     // console.log("prev");
     // console.log("next");
-    let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=3d733507306c4df1a4345ed4f3656249&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${this.props.API}&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`
     this.setState({ loading: true })
     let data = await fetch(url);
 
@@ -44,7 +44,7 @@ export class News extends Component {
     if (Math.ceil(this.state.totalResults / this.props.pageSize) >= this.state.page + 1) {
       // console.log("next");
 
-      let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=3d733507306c4df1a4345ed4f3656249&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`
+      let url = `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${this.props.API}&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`
       this.setState({ loading: true })
       let data = await fetch(url);
       let pa = await data.json();
@@ -64,18 +64,18 @@ export class News extends Component {
 
 
       <div className='container my-3'>
-        <h1 className="text-center">NewsMonkey-Top headline</h1>
+        <h1 className={`text-center text-${this.props.mode === 'dark' ? 'light' :'dark'}`}>NewsMonkey-Top headline</h1>
         {this.state.loading && <Spinner />}
         <div className="row container">
           {!this.state.loading &&this.state.articles.map((element) => {
             return <div className="col-md-4 my-2" key={element.url}>
-              <NewsItem title={element.title ? element.title : ""} description={element.description ? element.description : " "} url={element.urlToImage} newsurl={element.url} />
+              <NewsItem title={element.title ? element.title : ""} description={element.description ? element.description : " "} url={element.urlToImage} newsurl={element.url} mode={this.props.mode}/>
             </div>
           })}
 
           <div className="container d-flex justify-content-between">
-            <button type="button" disabled={this.state.page <= 1} className="btn btn-dark mx-4 " onClick={this.handlePrev} >&#8592; Previous</button>
-            <button type="button" disabled={Math.ceil(this.state.totalResults / this.props.pageSize) < this.state.page + 1} className="btn btn-dark mx-4 " onClick={this.handleNext} >Next	&rarr; </button>
+            <button type="button" disabled={this.state.page <= 1} className={`btn btn-${this.props.mode==='dark'?'light':'dark'} mx-4 my-4`} onClick={this.handlePrev} >&#8592; Previous</button>
+            <button type="button" disabled={Math.ceil(this.state.totalResults / this.props.pageSize) < this.state.page + 1} className={`btn btn-${this.props.mode==='dark'?'light':'dark'} mx-4 my-4`} onClick={this.handleNext} >Next	&rarr; </button>
           </div>
 
 
