@@ -4,9 +4,13 @@ import './App.css';
 import React, { Component } from 'react'
 import Navbar from './components/Navbar';
 import News from './components/News';
+// import PropTypes from 'prop-types'
+
 
 export default class App extends Component {
-  API = "3d733507306c4df1a4345ed4f3656249"
+ 
+
+  API = "747cb5af671f4436b1e4e3a2546acb85"
   constructor(){
     super();
     
@@ -39,7 +43,7 @@ export default class App extends Component {
       <div>
         <Navbar mode={this.state.mode} toggle={this.toggle}/>
         <div className="container">
-          <News pageSize={10} mode={this.state.mode} API= {this.API}/>
+          <News pageSize={12} mode={this.state.mode} API= {this.API} country='in'/>
         </div>
       </div>
     )
