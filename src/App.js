@@ -43,7 +43,7 @@ export default class App extends Component {
       <div>
         <Navbar mode={this.state.mode} toggle={this.toggle}/>
         <div className="container">
-          <News pageSize={12} mode={this.state.mode} API= {this.API} country='in'/>
+          <News pageSize={12} mode={this.state.mode} API= {this.API} country='in' category='science'/>
         </div>
       </div>
     )
