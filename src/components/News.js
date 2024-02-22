@@ -26,11 +26,14 @@ export class News extends Component {
     }
   }
   async upadteNews() {
+    this.props.setProgress(0);
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.API}&page=${this.state.page}&pageSize=${this.props.pageSize}`
     this.setState({ loading: true })
+    this.props.setProgress(50);
     let data = await fetch(url);
     let pa = await data.json();
     this.setState({ articles: pa.articles, totalResults: pa.totalResults, loading: false })
+    this.props.setProgress(100);
   }
 
   async componentDidMount() {
@@ -63,15 +66,15 @@ export class News extends Component {
               <NewsItem title={element.title ? element.title : ""} description={element.description ? element.description : " "} url={element.urlToImage} newsurl={element.url} mode={this.props.mode} author={element.author} date={element.publishedAt} />
             </div>
           })}
-
-          <div className="container d-flex justify-content-between">
-            <button type="button" disabled={this.state.page <= 1} className={`btn btn-${this.props.mode === 'dark' ? 'light' : 'dark'} mx-4 my-4`} onClick={this.handlePrev} >&#8592; Previous</button>
-            <button type="button" disabled={Math.ceil(this.state.totalResults / this.props.pageSize) < this.state.page + 1} className={`btn btn-${this.props.mode === 'dark' ? 'light' : 'dark'} mx-4 my-4`} onClick={this.handleNext} >Next	&rarr; </button>
-          </div>
-
-
-
         </div>
+        <div className="container d-flex justify-content-between">
+          <button type="button" disabled={this.state.page <= 1} className={`btn btn-${this.props.mode === 'dark' ? 'light' : 'dark'} mx-4 my-4`} onClick={this.handlePrev} >&#8592; Previous</button>
+          <button type="button" disabled={Math.ceil(this.state.totalResults / this.props.pageSize) < this.state.page + 1} className={`btn btn-${this.props.mode === 'dark' ? 'light' : 'dark'} mx-4 my-4`} onClick={this.handleNext} >Next	&rarr; </button>
+        </div>
+
+
+
+
       </div>
     )
   }
