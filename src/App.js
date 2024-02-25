@@ -60,7 +60,7 @@ export default class App extends Component {
         // onLoaderFinished={() => setProgress(0)}
       />
           <Routes>
-            <Route exact path="/" element={<News setProgress={this.setProgress} key="science" pageSize={12} mode={this.state.mode} API={this.API} country='in' category='science' />} />
+            <Route exact path="/" element={<News setProgress={this.setProgress} key="business" pageSize={12} mode={this.state.mode} API={this.API} country='in' category='business' />} />
             <Route exact path="/business" element={<News setProgress={this.setProgress} key="business" pageSize={12} mode={this.state.mode} API={this.API} country='in' category='business' />} />
             <Route exact path="/entertainment" element={<News setProgress={this.setProgress} key="entertainment" pageSize={12} mode={this.state.mode} API={this.API} country='in' category='entertainment' />} />
             <Route exact path="/general" element={<News setProgress={this.setProgress} key="general" pageSize={12} mode={this.state.mode} API={this.API} country='in' category='general' />} />
