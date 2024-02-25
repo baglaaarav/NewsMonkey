@@ -2,7 +2,7 @@
 import './App.css';
 import LoadingBar from 'react-top-loading-bar'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from './components/Navbar';
 import News from './components/News';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -14,6 +14,7 @@ const App = () => {
   
   const API = process.env.REACT_APP_NEWS_API;
   // document.body.style.backgroundColor = ""
+  
   const toggle = () => {
     if (mode === 'light') {
       document.body.style.backgroundColor = "#495057";
@@ -26,13 +27,13 @@ const App = () => {
       
     }
   }
-
-
-
+ 
+  useEffect(() => {
+    document.body.style.backgroundColor = "#E0E0E0";
+  }, []);
 
     return (
       <div >
-
        
         <Router >
         <Navbar mode={mode} toggle={toggle} />
